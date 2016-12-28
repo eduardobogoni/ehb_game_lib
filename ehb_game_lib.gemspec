@@ -12,4 +12,6 @@ Gem::Specification.new do |s|
   s.summary     = 'EHB\'s game library for Ruby'
 
   s.files = Dir['{lib}/**/*']
+
+  s.add_development_dependency 'rubocop', '0.42.0'
 end
