@@ -13,5 +13,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{lib}/**/*']
 
+  s.add_dependency 'chingu', '>= 0.8.1'
+
   s.add_development_dependency 'rubocop', '0.42.0'
 end
