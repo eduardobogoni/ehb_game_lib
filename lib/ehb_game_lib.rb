@@ -6,6 +6,7 @@ require 'ehb_game_lib/math/line_segment'
 require 'ehb_game_lib/math/quadratic_equation'
 require 'ehb_game_lib/math/vector'
 require 'ehb_game_lib/math/intersection/circle_line'
+require 'ehb_game_lib/math/intersection/circle_line_segment'
 require 'ehb_game_lib/patches/chingu/basic_game_object'
 
 module EhbGameLib
