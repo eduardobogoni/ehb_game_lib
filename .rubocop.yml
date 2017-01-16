@@ -4,5 +4,9 @@ Style/Documentation:
 Style/AsciiComments:
   Enabled: false
 
+Style/GlobalVars:
+  Exclude:
+    - lib/ehb_game_lib/globals.rb
+
 Metrics/LineLength:
   Max: 100
