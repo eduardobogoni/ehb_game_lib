@@ -10,3 +10,7 @@ Style/GlobalVars:
 
 Metrics/LineLength:
   Max: 100
+
+Metrics/ParameterLists:
+  Exclude:
+    - lib/ehb_game_lib/patches/gosu/font.rb
