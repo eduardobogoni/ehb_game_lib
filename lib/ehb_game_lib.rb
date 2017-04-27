@@ -1,6 +1,7 @@
 require 'chingu'
 require 'ehb_game_lib/version'
 require 'ehb_game_lib/globals'
+require 'ehb_game_lib/gfx'
 require 'ehb_game_lib/math/circle'
 require 'ehb_game_lib/math/line'
 require 'ehb_game_lib/math/line_segment'

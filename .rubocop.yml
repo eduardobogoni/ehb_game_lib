@@ -8,8 +8,16 @@ Style/GlobalVars:
   Exclude:
     - lib/ehb_game_lib/globals.rb
 
+Metrics/AbcSize:
+  Exclude:
+    - lib/ehb_game_lib/gfx.rb
+
 Metrics/LineLength:
   Max: 100
+
+Metrics/MethodLength:
+  Exclude:
+    - lib/ehb_game_lib/gfx.rb
 
 Metrics/ParameterLists:
   Exclude:
