@@ -1,3 +1,5 @@
+require 'active_support'
+require 'active_support/core_ext'
 require 'chingu'
 require 'ehb_game_lib/version'
 require 'ehb_game_lib/globals'
