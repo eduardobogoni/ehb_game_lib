@@ -18,6 +18,7 @@ require 'ehb_game_lib/nes/palette'
 require 'ehb_game_lib/patches/chingu/basic_game_object'
 require 'ehb_game_lib/patches/gosu/font'
 require 'ehb_game_lib/traits/bounding_line_segment'
+require 'ehb_game_lib/utils/cursor'
 
 module EhbGameLib
 end
