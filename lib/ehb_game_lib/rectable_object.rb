@@ -26,6 +26,10 @@ module EhbGameLib
         def #{c[:ceil]}=(v)
           self.#{c[:axis]} = v - #{c[:size]}
         end
+
+        def rect
+          ::Chingu::Rect.new(left, top, width, height)
+        end
       RUBY_EVAL
     end
   end
