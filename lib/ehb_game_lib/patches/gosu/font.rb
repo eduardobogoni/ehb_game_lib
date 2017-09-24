@@ -9,6 +9,14 @@ module EhbGameLib
             y += height
           end
         end
+
+        def text_height(text)
+          text.lines.count * height
+        end
+
+        def text_width(text)
+          text.lines.map { |l| super(l) }.max
+        end
       end
     end
   end
