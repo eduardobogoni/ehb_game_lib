@@ -6,7 +6,7 @@ module EhbGameLib
         @index = nil
       end
 
-      delegate :count, :each, to: :set
+      delegate :count, :each, :inject, :map, to: :set
 
       def select_last
         self.index = @set.length - 1
