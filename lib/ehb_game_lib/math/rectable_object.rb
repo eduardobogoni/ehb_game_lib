@@ -62,7 +62,7 @@ module EhbGameLib
             end
 
             def #{m}=(v)
-              self.coord = v + #{m}_delta
+              self.coord = v - #{m}_delta
             end
           RUBY_EVAL
         end
