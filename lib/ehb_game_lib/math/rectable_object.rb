@@ -17,7 +17,7 @@ module EhbGameLib
           end
         RUBY_EVAL
 
-        [:floor, :mean, :ceil].each do |m|
+        %i[floor mean ceil].each do |m|
           class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
             def #{a[m]}
               #{a[:name]}.#{m}
@@ -55,7 +55,7 @@ module EhbGameLib
           @size_get.call
         end
 
-        %w(floor mean ceil).each do |m|
+        %w[floor mean ceil].each do |m|
           class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
             def #{m}
               coord + #{m}_delta
