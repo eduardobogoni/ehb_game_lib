@@ -3,6 +3,7 @@
 require 'active_support'
 require 'active_support/core_ext'
 require 'chingu'
+require 'opengl'
 require 'ehb_game_lib/version'
 require 'ehb_game_lib/globals'
 require 'ehb_game_lib/gfx'

@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activesupport', '>= 4.0.0'
   s.add_dependency 'chingu', '>= 0.8.1'
   s.add_dependency 'gosu', '~> 0.13.1'
+  s.add_dependency 'opengl'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rubocop', '~> 0.79.0'
