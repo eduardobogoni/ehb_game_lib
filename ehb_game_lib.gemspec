@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'gosu', '~> 0.13.1'
 
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rubocop', '0.42.0'
+  s.add_development_dependency 'rubocop', '~> 0.79.0'
   s.add_development_dependency 'test-unit'
 end

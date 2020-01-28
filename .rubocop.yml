@@ -1,3 +1,6 @@
+Layout/LineLength:
+  Max: 100
+
 Style/Documentation:
   Enabled: false
 
@@ -11,9 +14,6 @@ Style/GlobalVars:
 Metrics/AbcSize:
   Exclude:
     - lib/ehb_game_lib/gfx.rb
-
-Metrics/LineLength:
-  Max: 100
 
 Metrics/MethodLength:
   Exclude:
