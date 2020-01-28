@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EhbGameLib
   module Math
     class QuadraticEquation
@@ -12,6 +14,7 @@ module EhbGameLib
       def roots
         return [root(1), root(-1)] if delta > 0.0
         return [root(1)] if delta == 0.0
+
         []
       end
 
@@ -20,7 +23,7 @@ module EhbGameLib
       end
 
       def root(signal)
-        signal = signal < 0 ? -1 : 1
+        signal = signal.negative? ? -1 : 1
         (-b + signal * ::Math.sqrt(delta)) / (2 * a)
       end
     end

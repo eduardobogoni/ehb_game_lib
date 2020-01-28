@@ -1,6 +1,19 @@
 Layout/LineLength:
   Max: 100
 
+Naming/MethodParameterName:
+  Exclude:
+    - lib/ehb_game_lib/gfx.rb
+    - lib/ehb_game_lib/math/circle.rb
+    - lib/ehb_game_lib/math/line.rb
+    - lib/ehb_game_lib/math/line_segment.rb
+    - lib/ehb_game_lib/math/quadratic_equation.rb
+    - lib/ehb_game_lib/math/rectable_object.rb
+    - lib/ehb_game_lib/math/vector.rb
+    - lib/ehb_game_lib/nes/all_colors_palette.rb
+    - lib/ehb_game_lib/patches/gosu/font.rb
+    - test/lib/ehb_game_lib/math/rectable_object_test.rb
+
 Style/Documentation:
   Enabled: false
 

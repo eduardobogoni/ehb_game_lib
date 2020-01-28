@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EhbGameLib
   module Traits
     # Interface required:
@@ -5,10 +7,12 @@ module EhbGameLib
     module BoundingLineSegment
       def nearest_circle_collision(klasses)
         return [nil, nil] unless line_segment?
+
         min_obj = min_p = min_dist = nil
         each_circle_collision(klasses) do |object, p|
           dist = Gosu.distance(last_x, last_y, p.x, p.y)
           next unless min_dist.nil? || dist < min_dist
+
           min_dist = dist
           min_obj = object
           min_p = p

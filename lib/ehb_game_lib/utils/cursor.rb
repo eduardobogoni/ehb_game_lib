@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EhbGameLib
   module Utils
     class Cursor
@@ -38,7 +40,7 @@ module EhbGameLib
           @index = 0
         elsif @index >= @set.count
           @index = @set.count - 1
-        elsif @index < 0
+        elsif @index.negative?
           @index = 0
         end
       end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EhbGameLib
   # No-global variables bridge to Chingu global variables.
   class Globals
