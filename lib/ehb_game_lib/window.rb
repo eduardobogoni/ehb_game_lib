@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
+require 'eac_ruby_utils/core_ext'
+require 'ehb_game_lib/canvas'
+
 module EhbGameLib
   class Window < ::Chingu::Window
     attr_accessor :fit_canvas_to_window, :draw_retro
-    attr_reader :canvas_width, :canvas_height, :canvas_factor
+    attr_reader :canvas, :canvas_factor
 
     def initialize(canvas_width, canvas_height)
-      @canvas_width = canvas_width
-      @canvas_height = canvas_height
+      @canvas = ::EhbGameLib::Canvas.new(canvas_width, canvas_height)
       @canvas_factor = 1
       self.fit_canvas_to_window = true
       self.draw_retro = true
@@ -15,11 +17,11 @@ module EhbGameLib
     end
 
     def calculated_width
-      canvas_width * canvas_factor
+      canvas.width * canvas_factor
     end
 
     def calculated_height
-      canvas_height * canvas_factor
+      canvas.height * canvas_factor
     end
 
     def canvas_factor=(factor)
@@ -42,7 +44,11 @@ module EhbGameLib
     private
 
     def canvas_image_source
-      image_source(0, height - canvas_height, canvas_width, canvas_height)
+      image_source(0, height - canvas.height, canvas.width, canvas.height)
+    end
+
+    def canvas_rect_uncached
+      ::EhbGameLib::Math::Rect.new(0, 0, canvas.width, canvas.height)
     end
 
     def image_source(x, y, w, h)
