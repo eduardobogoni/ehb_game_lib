@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils/require_sub'
 require 'ehb_game_lib/canvas'
+::EacRubyUtils.require_sub(__FILE__)
 
 module EhbGameLib
   class Window < ::Chingu::Window
@@ -53,25 +55,6 @@ module EhbGameLib
 
     def image_source(x, y, w, h)
       GlReadPixelsImage.new(x, y, w, h)
-    end
-
-    class GlReadPixelsImage
-      attr_reader :columns, :rows
-
-      DEPTH = 4
-
-      def initialize(x, y, width, height)
-        @columns = width
-        @rows = height
-        Gosu.flush
-        Gosu.gl do
-          @blob = ::Gl.glReadPixels(x, y, width, height, Gl::GL_RGBA, Gl::GL_UNSIGNED_BYTE)
-        end
-      end
-
-      def to_blob
-        @blob.force_encoding('binary').scan(/.{#{columns * 4}}/m).reverse.join
-      end
     end
   end
 end
