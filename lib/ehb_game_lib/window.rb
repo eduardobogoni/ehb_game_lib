@@ -34,7 +34,10 @@ module EhbGameLib
 
     def draw
       super if ::EhbGameLib::Globals.window
+      draw_resized
     end
+
+    private
 
     def draw_resized
       return unless fit_canvas_to_window
@@ -42,8 +45,6 @@ module EhbGameLib
       ::Gosu::Image.new(canvas_image_source, retro: draw_retro)
                    .draw(0, 0, 100, canvas_factor, canvas_factor)
     end
-
-    private
 
     def canvas_image_source
       image_source(0, height - canvas.height, canvas.width, canvas.height)
