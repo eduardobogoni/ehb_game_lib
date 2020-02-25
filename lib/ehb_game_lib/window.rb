@@ -16,6 +16,7 @@ module EhbGameLib
       self.fit_canvas_to_window = true
       self.draw_retro = true
       super calculated_width, calculated_height
+      dimensions_reset
     end
 
     def calculated_width
@@ -28,8 +29,12 @@ module EhbGameLib
 
     def canvas_factor=(factor)
       @canvas_factor = factor
-      self.width = calculated_width
-      self.height = calculated_height
+      dimensions_reset
+    end
+
+    def fullscreen=(value)
+      super(value)
+      dimensions_reset
     end
 
     def draw
@@ -39,8 +44,18 @@ module EhbGameLib
 
     private
 
+    def dimensions_reset
+      if fullscreen?
+        self.width = canvas.width
+        self.height = canvas.height
+      else
+        self.width = calculated_width
+        self.height = calculated_height
+      end
+    end
+
     def draw_resized
-      return unless fit_canvas_to_window
+      return unless fit_canvas_to_window && !fullscreen?
 
       ::Gosu::Image.new(canvas_image_source, retro: draw_retro)
                    .draw(0, 0, 100, canvas_factor, canvas_factor)
