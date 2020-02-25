@@ -49,10 +49,6 @@ module EhbGameLib
       image_source(0, height - canvas.height, canvas.width, canvas.height)
     end
 
-    def canvas_rect_uncached
-      ::EhbGameLib::Math::Rect.new(0, 0, canvas.width, canvas.height)
-    end
-
     def image_source(x, y, w, h)
       GlReadPixelsImage.new(x, y, w, h)
     end
