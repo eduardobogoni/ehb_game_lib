@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'eac_ruby_utils', '~> 0.57'
   s.add_dependency 'gosu', '~> 0.13.1'
   s.add_dependency 'opengl'
+  s.add_dependency 'rmagick', '~> 4.1', '>= 4.1.2'
 
   s.add_development_dependency 'eac_ruby_gem_support', '~> 0.1', '>= 0.1.2'
   s.add_development_dependency 'rake'
