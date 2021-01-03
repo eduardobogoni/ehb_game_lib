@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{lib,test}/**/*']
 
   s.add_dependency 'chingu', '>= 0.8.1'
-  s.add_dependency 'eac_ruby_utils', '~> 0.19'
+  s.add_dependency 'eac_ruby_utils', '~> 0.57'
   s.add_dependency 'gosu', '~> 0.13.1'
   s.add_dependency 'opengl'
 
