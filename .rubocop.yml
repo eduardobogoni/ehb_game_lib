@@ -25,3 +25,12 @@ Metrics/MethodLength:
 Metrics/ParameterLists:
   Exclude:
     - lib/ehb_game_lib/patches/gosu/font.rb
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
