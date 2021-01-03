@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'ehb_game_lib/math/circle'
+require 'ehb_game_lib/math/intersection/circle_line'
+require 'ehb_game_lib/math/intersection/circle_line_segment'
 require 'test_helper'
 
 module EhbGameLib
