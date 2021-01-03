@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'chingu'
+
 module EhbGameLib
   class Window < ::Chingu::Window
     class GlReadPixelsImage
