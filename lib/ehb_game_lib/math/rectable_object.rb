@@ -7,32 +7,31 @@ module EhbGameLib
     module RectableObject
       require_sub __FILE__
 
-      H_AXIS = { name: :ax, coord: :x, size: :width, floor: :left, mean: :center,
-                 ceil: :right }.freeze
-      V_AXIS = { name: :ay, coord: :y, size: :height, floor: :top, mean: :middle,
-                 ceil: :bottom }.freeze
+      [%i[ax x width left center right],
+       %i[ay y height top middle bottom]].each do |aa|
+        a = ::OpenStruct.new(
+          %i[name coord size floor mean ceil]
+          .each_with_index.map { |k, i| [k, aa[i]] }.to_h
+        )
 
-      [H_AXIS, V_AXIS].each do |a|
-        class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
-          def #{a[:name]}
-            @#{a[:name]} ||= Axis.new(
-              -> { #{a[:coord]} },
-              -> (v) { self.#{a[:coord]} = v },
-              -> { #{a[:size]} }
+        define_method a.name do
+          @data ||= {}
+          @data[a.name] ||=
+            Axis.new(
+              -> { send(a.coord) },
+              ->(v) { send("#{a.coord}=", v) },
+              -> { send(a.size) }
             )
-          end
-        RUBY_EVAL
+        end
 
         %i[floor mean ceil].each do |m|
-          class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
-            def #{a[m]}
-              #{a[:name]}.#{m}
-            end
+          define_method a[m] do
+            send(a.name).send(m)
+          end
 
-            def #{a[m]}=(v)
-              #{a[:name]}.#{m} = v
-            end
-          RUBY_EVAL
+          define_method "#{a[m]}=" do |v|
+            send(a.name).send("#{m}=", v)
+          end
         end
       end
 
