@@ -16,7 +16,9 @@ module EhbGameLib
         end
       end
 
-      common_constructor :magick_image
+      common_constructor :magick_image do
+        magick_image.alpha(::Magick::ActivateAlphaChannel)
+      end
 
       # @return Gosu::Image
       def gosu_image
