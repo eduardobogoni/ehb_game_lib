@@ -1,39 +1,35 @@
 # frozen_string_literal: true
 
+require 'eac_ruby_utils/core_ext'
+
 module EhbGameLib
   module Math
     module RectableObject
       class Axis
         attr_accessor :anchor
 
-        def initialize(coord_get, coord_set, size_get)
-          @coord_get = coord_get
-          @coord_set = coord_set
-          @size_get = size_get
-        end
+        common_constructor :coord_get, :coord_set, :size_get
 
         def coord
-          @coord_get.call
+          coord_get.call
         end
 
         def coord=(v)
-          @coord_set.call(v)
+          coord_set.call(v)
         end
 
         def size
-          @size_get.call
+          size_get.call
         end
 
         %w[floor mean ceil].each do |m|
-          class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
-            def #{m}
-              coord + #{m}_delta
-            end
+          define_method m do
+            coord + send("#{m}_delta")
+          end
 
-            def #{m}=(v)
-              self.coord = v - #{m}_delta
-            end
-          RUBY_EVAL
+          define_method "#{m}=" do |v|
+            self.coord = v - send("#{m}_delta")
+          end
         end
 
         private
