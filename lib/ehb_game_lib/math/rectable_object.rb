@@ -7,7 +7,7 @@ module EhbGameLib
     module RectableObject
       require_sub __FILE__
 
-      [%i[ax x width left center right],
+      [%i[ax x width left center right], # rubocop:disable Metrics/BlockLength
        %i[ay y height top middle bottom]].each do |aa|
         a = ::OpenStruct.new(
           %i[name coord size floor mean ceil]
@@ -25,8 +25,16 @@ module EhbGameLib
         end
 
         %i[floor mean ceil].each do |m|
-          define_method a[m] do
-            send(a.name).send(m)
+          define_method a[m] do |*args|
+            if args.count.zero?
+              send(a.name).send(m)
+            elsif args.count == 1
+              send(a.name).send("#{m}=", args[0])
+
+              self
+            else
+              raise ::ArgumentError, "Invalid number of arguments (#{args.count} for 0..1)"
+            end
           end
 
           define_method "#{a[m]}=" do |v|
