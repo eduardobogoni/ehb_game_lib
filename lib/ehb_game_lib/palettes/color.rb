@@ -19,8 +19,10 @@ module EhbGameLib
           quantum
         end
 
-        def quantum_to_magick_range(quantum)
-          ((quantum / QUANTUM_MAX.to_f) * ::Magick::QuantumRange).floor
+        def quantum_to_magick_range(quantum, invert = false)
+          r = ((quantum / QUANTUM_MAX.to_f) * ::Magick::QuantumRange).floor
+          r = ::Magick::QuantumRange - r if invert
+          r
         end
 
         # @return [Array<EhbGameLib::Palettes::Color>]
@@ -54,7 +56,8 @@ module EhbGameLib
       # @return [Magick::Pixel]
       def magick_pixel
         @magick_pixel ||= ::Magick::Pixel.new(
-          *[red, green, blue, alpha].map { |n| self.class.quantum_to_magick_range(n) }
+          *[red, green, blue].map { |n| self.class.quantum_to_magick_range(n) },
+          self.class.quantum_to_magick_range(alpha, true)
         )
       end
 
